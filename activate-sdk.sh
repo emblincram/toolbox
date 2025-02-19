@@ -4,10 +4,15 @@
 # SPDX-Author: Roman Koch <koch.romam@gmail.com>
 # SPDX-Copyright: 2024 Roman Koch <koch.romam@gmail.com>
 
-#/mnt/ssd/yocto/beaglebone/poky/build/deploy-ti/sdk/poky-glibc-x86_64-meta-toolchain-armv7at2hf-neon-beaglebone-toolchain-4.0.24.sh -d /mnt/ssd/yocto/bbb-sdk
+TARGET_DIR="/mnt/ssd/work/bbb-sdk/"
 
-#source /mnt/ssd/yocto/bbb-sdk/site-config-armv7at2hf-neon-poky-linux-gnueabi
-source /mnt/ssd/yocto/bbb-sdk/environment-setup-armv7at2hf-neon-poky-linux-gnueabi
+# Suche nach der passenden SDK-Installationsdatei
+ENV_FILE=$(find "$TARGET_DIR" -type f -name "environment-setup-*" | head -n 1)
 
-#/mnt/ssd/yocto/bbb-sdk/site-config-armv7at2hf-neon-poky-linux-gnueabi
-#/mnt/ssd/yocto/bbb-sdk/version-armv7at2hf-neon-poky-linux-gnueabi
+if [ -z "$ENV_FILE" ]; then
+    echo "Fehler: Keine passende ENV-Datei gefunden."
+    exit 1
+fi
+
+source "${ENV_FILE}"
+
