@@ -5,7 +5,7 @@
 # SPDX-Copyright: 2024 Roman Koch <koch.romam@gmail.com>
 
 # Konfiguration
-IMAGES_DIR="build/deploy-ti/images/beaglebone" # Pfad zu den Yocto-Images
+IMAGES_DIR="build/deploy-ti/images/beagle-x15" # Pfad zu den Yocto-Images
 OUTPUT_DIR="build/sd-card" # Zielordner für entpackte Dateien
 
 # Prüfen, ob der Quellordner existiert

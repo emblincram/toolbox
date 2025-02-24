@@ -7,14 +7,18 @@
 set -e  # Stop on error
 
 # Prüfen, ob genügend Argumente übergeben wurden
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 <path/to/image.wic> <sd_card>"
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <sd_card>"
     exit 1
 fi
 
+IMAGE_DIR=build/sd-card/
+IMAGE_PATH=`ls ${IMAGE_DIR}/*.wic`
+
+echo "image ${IMAGE_PATH}"
+
 # Argumente
-IMAGE_PATH=$1
-SD_CARD=$2
+SD_CARD=$1
 
 # Sicherstellen, dass das Skript mit Root-Rechten ausgeführt wird
 if [[ $EUID -ne 0 ]]; then
